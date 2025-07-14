@@ -59,14 +59,14 @@ if st.button("Analyze"):
             for item in sorted_outputs:
                 emotion = item[0].lower()
                 score = item[1]
-                percent = int((score//total) * 100)
+                percent = int((score/total) * 100)
                 color = emotion_colors.get(emotion, "#d3d3d3")  # default to light gray if unknown
 
                 # Create gradient badge
                 st.markdown(
                     f"""
                     <div style="
-                        background: linear-gradient(90deg, {color} {percent}%, #f0f0f0 {percent}%);
+                        background: linear-gradient(90deg, {color} {percent}%, #f0f0f0 {100-percent}%);
                         border-radius: 20px;
                         padding: 10px 20px;
                         margin: 5px 0;
