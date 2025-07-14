@@ -55,7 +55,6 @@ if st.button("Analyze"):
             sorted_outputs = sorted(predicted_labels, key=lambda x: x[1], reverse=True)
 
             st.subheader("Detected Emotions:")
-            elements = ""
             for item in sorted_outputs:
                 emotion = item[0].lower()
                 score = item[1]
@@ -63,8 +62,8 @@ if st.button("Analyze"):
                 color = emotion_colors.get(emotion, "#d3d3d3")  # default to light gray if unknown
 
                 # Create gradient badge
-                elements+=f"""
-                    <span style="
+                st.markdown(f"""
+                    <div style="
                         background: linear-gradient(90deg, {color} {percent}%, #f0f0f0 {100-percent}%);
                         border-radius: 20px;
                         padding: 10px 20px;
@@ -76,9 +75,8 @@ if st.button("Analyze"):
                         border: 1px solid #ccc;
                     ">
                         {emotion.capitalize()}: {percent:.1f}%
-                    </span>\n
-                    """
-            st.markdown(f'''<div style="display:inline;"> {elements} </div>''',
+                    </div>
+                    """,
                     unsafe_allow_html=True
                 )
     else:
