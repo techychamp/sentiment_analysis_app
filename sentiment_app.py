@@ -1,4 +1,4 @@
-import streamlit as st
+animport streamlit as st
 from transformers import pipeline
 from transformers import AutoTokenizer
 import torch
@@ -64,7 +64,7 @@ if st.button("Analyze"):
 
                 # Create gradient badge
                 elements+=f"""
-                    <div style="
+                    <span style="
                         background: linear-gradient(90deg, {color} {percent}%, #f0f0f0 {100-percent}%);
                         border-radius: 20px;
                         padding: 10px 20px;
@@ -76,9 +76,9 @@ if st.button("Analyze"):
                         border: 1px solid #ccc;
                     ">
                         {emotion.capitalize()}: {percent:.1f}%
-                    </div>
+                    </span>\n
                     """
-            st.markdown(f'<div style="display:inline">{elements}</div>',
+            st.markdown(f'''<div style="display:inline;"> {elements} </div>''',
                     unsafe_allow_html=True
                 )
     else:
